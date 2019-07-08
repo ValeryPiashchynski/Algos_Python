@@ -2,7 +2,7 @@ from math import log
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.style.use('mpl20')
+plt.style.use('bmh')
 
 n = np.linspace(1, 10, 1000)
 labels = ['Constant', 'Logarithmic', 'Linear', 'Log Linear', 'Quadratic', 'Cubic', 'Exponential']
