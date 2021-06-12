@@ -26,15 +26,30 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
        in Gregorian calendar, and the first date is not after
        the second."""
 
+    assert (dateIsBefore(year1, month1, day1, year2, month2, day2) is False)
+
     num = 0
     if year1 == year2 and month1 == month2 and day1 == day2:
         return 0
 
-    while not (year1 == year2 and month1 == month2 and day1 == day2):
-        num += 1
+    while dateIsBefore(year1, month1, day1, year2, month2, day2):
         year1, month1, day1 = nextDay(year1, month1, day1)
-       
+        num += 1
+
     return num
+
+
+def dateIsBefore(year1, month1, day1, year2, month2, day2):
+    if year1 < year2:
+        return True
+
+    if year1 == year2:
+        if month1 < month2:
+            return True
+        if month1 == month2:
+            if day1 < day2:
+                return True
+    return False
 
 
 def test():
