@@ -16,7 +16,8 @@ with open('calls.csv', 'r') as f:
     ll = list(calls)
     # get the last item based on the calls len
     last = ll[len(txt) - 1]
-    print(f"Last record of calls, {str(last[0])} calls {str(last[1])} at time {str(last[2])}")
+    print(
+        f"Last record of calls, {str(last[0])} calls {str(last[1])} at time {str(last[2])}, lasting {str(last[3])} seconds")
 """
 TASK 0:
 What is the first record of texts and what is the last record of calls?
