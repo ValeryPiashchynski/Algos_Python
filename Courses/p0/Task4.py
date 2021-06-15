@@ -25,3 +25,28 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
+
+def solve():
+    # we need to read all needed fields
+    snd = set([data[0] for data in calls])
+    rcv = set([data[1] for data in calls])
+    m_snd = set([data[0] for data in texts])
+    m_rcv = set([data[1] for data in texts])
+
+    # create a array
+    possible_tm = []
+
+    # loop over call senders
+    for call_sender in snd:
+        if call_sender not in rcv and call_sender not in m_snd and call_sender not in m_rcv:
+            possible_tm.append(call_sender)
+
+    # sort because of task
+    possible_tm.sort()
+
+    print("\n These numbers could be telemarketers:")
+    for tm in possible_tm:
+        print(tm)
+
+
+solve()

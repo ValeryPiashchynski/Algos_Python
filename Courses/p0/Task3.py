@@ -44,3 +44,59 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+
+def IsBangalore(c):
+    return c[0][0:5] == '(080)'
+
+
+# according to a task, we have 3 cases:
+"""
+Fixed lines start with an area code enclosed in brackets. The area codes vary in length but always begin with 0. Example: "(022)40840621".
+Mobile numbers have no parentheses, but have a space in the middle of the number to help readability. The mobile code of a mobile number is its first four digits and they always start with 7, 8 or 9. Example: "93412 66159".
+Telemarketers' numbers have no parentheses or space, but start with the code 140. Example: "1402316533".
+"""
+
+
+def areaCode(call):
+    other = call[1]
+    # input ['(080)45291968', '90365 06212', '01-09-2016 06:30:36', '9'] (sample)
+    # fixed
+    if other[:2] == '(0':
+        return other.split(sep=')')[0] + ')'
+    # telemarketers
+    if other[:3] == '140':
+        return other[:3]
+    # mobile phone
+    else:
+        return other[:4]
+
+
+def solve():
+    bangalore_prefix = []
+    # Part A
+    for call in calls:
+        # ['78130 00821', '98453 94494', '01-09-2016 06:01:12', '186'] call
+        # check if it from Bangalore
+        if IsBangalore(call):
+            # if it is, append to the bangalore prefixes extracting area code
+            bangalore_prefix.append(areaCode(call))
+
+    b_prefix = list(set(bangalore_prefix))
+    b_prefix.sort()
+
+    print("\n The numbers called by people in Bangalore have codes:")
+    for b in b_prefix:
+        print(b)
+
+    # Part B
+    same_country = 0
+    for call_prefix in bangalore_prefix:
+        if call_prefix == "(080)":
+            same_country += 1
+
+    # calculate percentage
+    print("\n {} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(same_country / len(bangalore_prefix) * 100, 2)))
+
+
+solve()
