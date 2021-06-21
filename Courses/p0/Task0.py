@@ -15,7 +15,7 @@ with open('calls.csv', 'r') as f:
     calls = list(reader)
     ll = list(calls)
     # get the last item based on the calls len
-    last = ll[len(txt) - 1]
+    last = ll[len(ll) - 1]
     print(
         f"Last record of calls, {str(last[0])} calls {str(last[1])} at time {str(last[2])}, lasting {str(last[3])} seconds")
 """
